@@ -4,21 +4,20 @@
     "description": "Amazon Shop Competitor",
     "main": "application.js",
     "scripts": {
-      "start": "concurrently \"npm run start:books\" \"npm run start:dvds\"",
-      "start:books": "cd B/src/controllers && node bookController.js",
-      "test": "cd B && jasmine",
-      "start:dvds": "cd B/src/controllers && node dvdController.js"
+        "start": "concurrently \"npm run start:books\" \"npm run start:dvds\"",
+        "start:books": "cd B/src/controllers && node bookController.js",
+        "test": "cd B && jasmine",
+        "start:dvds": "cd B/src/controllers && node dvdController.js"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-      "jasmine": "^3.10.0",
-      "concurrently": "^8.2.2"
+        "concurrently": "^8.2.2",
+        "jasmine": "^3.10.0"
     },
     "dependencies": {
-      "axios": "^1.6.8",
-      "express": "^4.19.2",
-      "oracledb": "^6.4.0"
+        "axios": "^1.7.7",
+        "express": "^4.19.2",
+        "oracledb": "^6.4.0"
     }
-  }
-  
+}
