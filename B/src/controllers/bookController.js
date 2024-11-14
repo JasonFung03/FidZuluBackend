@@ -1,6 +1,6 @@
 const express = require('express');
 const TransactionManager = require('../dao/transactionManager')
-const BookDao = require('../dao/bookDao');
+const BookService = require('../service/bookService');
 
 class BookController {
     constructor() {
@@ -16,7 +16,7 @@ class BookController {
         this.app.use('/', router);
 
         this.transactionManager = new TransactionManager();
-        this.bookDao = new BookDao(this.transactionManager);
+        this.bookService = new BookService();
     }
 
     start() {
@@ -30,13 +30,12 @@ class BookController {
         try {
             await this.transactionManager.startTransaction();
  
-            const books = await this.bookDao.fetchAllBooksByLocation(location);
-
+            const books = await this.bookService.fetchAllBooksByLocation(location.toLocaleUpperCase());
             const response = {
                 location: location,
                 books: books
             };
-    
+            
             res.json(response);
         } catch (err) {
             console.error(`error on GET books for location ${location}: ${err}`)
