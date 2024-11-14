@@ -1,7 +1,7 @@
-const dbUtils = require('./db-utils');
-const DVD = require('../model/DVD');
+const dbUtils = require('./dbUtils');
+const DVD = require('../models/dvd');
 
-class dvdDao {
+class DvdDao {
 
     constructor(connectionProvider) {  
         this.connectionProvider = connectionProvider;
@@ -9,32 +9,29 @@ class dvdDao {
 
     async queryForDVDsByLocation(location) {
         const sql = `
-            select title, mpaa_rating, studio, time, price 
-            from DVDs
+            SELECT title, mpaa_rating, studio, time, price 
+            FROM DVD
         `;
 
-        const result = await this.connectionProvider.connection.execute(sql, [id], dbUtils.executeOpts);
-
+        const dvds = [];
+        const result = await this.connectionProvider.connection.execute(sql, {}, dbUtils.executeOpts);
         const rs = result.resultSet;
-        let row = await rs.getRow();
-        if (row) {
-
-            let locationPrice = row.PRICE;
-
-            if(location = "IE") {
-                locationPrice = row.PRICE * 1.08;
+        let row;
+        while ((row = await rs.getRow())) {
+            console.log(row)
+            var newPrice = row.PRICE;
+            if (location == "US-NC") {
+                newPrice = row.PRICE * 1.08;
+            } else if (location == "IE") {
+                newPrice = row.PRICE * 1.23;
+            } else if (location == "IN") {
+                newPrice = row.PRICE * 1.18;
             }
-            if(location = "US-NC") {
-                locationPrice = row.PRICE * 1.23;
-            }
-            if(location = "IN") {
-                locationPrice = row.PRICE * 1.18;
-            }
-
-            const dvd = new DVD(row.TITLE, row.MPAA_RATING, row.STUDIO, row.TIME, locationPrice);
-            return dvd;
+            const dvd = new DVD(row.TITLE, row.MPAA_RATING, row.STUDIO, row.TIME, newPrice);
+            dvds.push(dvd);
         }
         await rs.close();
+        return dvds;
     }
 }
-module.exports = dvdDao
+module.exports = DvdDao
