@@ -3,7 +3,7 @@ class DVD {
         this.title = title;
         this.mpaa_rating = mpaa_rating;
         this.studio = studio;
-        this. time = time;
+        this.time = time;
         this.price = price;
     }
 
@@ -11,6 +11,6 @@ class DVD {
         JSON.stringify(this);
     }
 }
-MediaSourceHandle.exports = DVD
+module.exports = DVD
 
 

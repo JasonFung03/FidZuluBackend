@@ -1,10 +1,10 @@
 const express = require('express');
 const TransactionManager = require('../dao/transactionManager')
-const DVDService = require('../service/dvdService');
+const DvdService = require('../service/dvdService');
 
 class DVDController {
     constructor() {
-        this.port = process.env.PORT || 3034;
+        this.port = process.env.PORT || 3035;
 
         this.app = express();
         this.app.use(express.json());
@@ -16,7 +16,7 @@ class DVDController {
         this.app.use('/', router);
 
         this.transactionManager = new TransactionManager();
-        this.dvdService = new DVDService();
+        this.dvdService = new DvdService();
     }
 
     start() {
@@ -30,7 +30,8 @@ class DVDController {
         try {
             await this.transactionManager.startTransaction();
  
-            const dvds = await this.dvdService.fetchAllDVDsByLocation(location.toLocaleUpperCase());
+            const dvds = await this.dvdService.queryForDVDsByLocation(location.toLocaleUpperCase());
+            console.log(dvds)
             const response = {
                 location: location,
                 dvds: dvds

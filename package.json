@@ -5,7 +5,7 @@
     "main": "application.js",
     "scripts": {
       "start:books": "cd B/src/controllers && node bookController.js",
-      "start:dvds": "cd B/dvds && node dvdController.js"
+      "start:dvds": "cd B/src/controllers && node dvdController.js"
     },
     "author": "",
     "license": "ISC",
