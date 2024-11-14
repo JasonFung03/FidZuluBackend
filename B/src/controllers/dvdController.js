@@ -1,5 +1,5 @@
 const express = require('express');
-const TransactionManager = require('../dao/transactionManager')
+const TransactionManager = require('../dao/transactionManager');
 const DvdService = require('../service/dvdService');
 
 class DVDController {
@@ -21,7 +21,7 @@ class DVDController {
 
     start() {
         this.app.listen(this.port, 
-            () => console.log(`DVDs service running on port ${this.port}`))
+            () => console.log(`DVDs service running on port ${this.port}`));
     }
 
     async getAllDVDsByLocation(req, res) {
@@ -30,8 +30,7 @@ class DVDController {
         try {
             await this.transactionManager.startTransaction();
  
-            const dvds = await this.dvdService.queryForDVDsByLocation(location.toLocaleUpperCase());
-            console.log(dvds)
+            const dvds = await this.dvdService.queryForDVDsByLocation(location.toUpperCase());
             const response = {
                 location: location,
                 dvds: dvds
@@ -39,8 +38,8 @@ class DVDController {
             
             res.json(response);
         } catch (err) {
-            console.error(`error on GET dvds for location ${location}: ${err}`)
-            res.status(500).json({error: err});
+            console.error(`Error on GET dvds for location ${location}: ${err}`);
+            res.status(500).json({error: err.message});
         } finally {
             await this.rollbackTransaction();
         }
@@ -57,7 +56,7 @@ class DVDController {
         try {
             await this.transactionManager.rollbackTransaction();
         } catch (err) {
-            console.error(`error on rollback: ${err}`)
+            console.error(`Error on rollback: ${err}`);
         }
     }
 }

@@ -1,7 +1,7 @@
 const dbUtils = require('./dbUtils');
 const DVD = require('../models/dvd');
 
-class dvdDao {
+class DvdDao {
 
     constructor(connectionProvider) {  
         this.connectionProvider = connectionProvider;
@@ -9,14 +9,13 @@ class dvdDao {
 
     async queryForDVDsByLocation(location) {
         const sql = `
-            select title, mpaa_rating, studio, time, price 
-            from DVDs
+            SELECT title, mpaa_rating, studio, time, price 
+            FROM DVD
         `;
 
         const dvds = [];
         const result = await this.connectionProvider.connection.execute(sql, {}, dbUtils.executeOpts);
         const rs = result.resultSet;
-        console.log(rs)
         let row;
         while ((row = await rs.getRow())) {
             console.log(row)
@@ -35,4 +34,4 @@ class dvdDao {
         return dvds;
     }
 }
-module.exports = dvdDao
+module.exports = DvdDao

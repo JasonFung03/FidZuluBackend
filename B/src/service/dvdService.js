@@ -1,10 +1,10 @@
 const TransactionManager = require('../dao/transactionManager');
-const dvdDao = require('../dao/dvdDao');
+const DvdDao = require('../dao/dvdDao');
 
 class DvdService {
     constructor() {
         this.transactionManager = new TransactionManager();
-        this.dao = new dvdDao(this.transactionManager);
+        this.dao = new DvdDao(this.transactionManager);
     }
 
     async queryForDVDsByLocation(location) {
