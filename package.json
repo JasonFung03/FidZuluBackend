@@ -4,6 +4,7 @@
     "description": "Amazon Shop Competitor",
     "main": "application.js",
     "scripts": {
+      "start": "concurrently \"npm run start:books\" \"npm run start:dvds\"",
       "start:books": "cd B/src/controllers && node bookController.js",
       "test": "cd B && jasmine",
       "start:dvds": "cd B/src/controllers && node dvdController.js"
@@ -11,7 +12,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-      "jasmine": "^3.10.0"
+      "jasmine": "^3.10.0",
+      "concurrently": "^8.2.2"
     },
     "dependencies": {
       "axios": "^1.6.8",
