@@ -112,4 +112,18 @@ describe('RESTful controller unit tests for Book:', () => {
         });
     });
 
+    describe('retrieve team information', () => {
+        it('succeeds', () => {
+            const req = {};
+            const expectedResponse = {
+                team: "Group 6 Team",
+                members: ["Benji", "Jason", "Bartek"]
+            };
+
+            controller.getTeam(req, mockHttpResponse);
+
+            expect(mockHttpResponse.json).toHaveBeenCalledOnceWith(expectedResponse);
+        });
+    });
+
 });

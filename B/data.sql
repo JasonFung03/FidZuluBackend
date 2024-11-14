@@ -26,3 +26,5 @@ INSERT INTO DVD (Title, Mpaa_rating, Studio, Time, price) VALUES ('Avengers - In
 INSERT INTO DVD (Title, Mpaa_rating, Studio, Time, price) VALUES ('Spider-Man Homecoming', '14 and over', 'Sony Pictures Home Entertainment', '133', '7.23');
 INSERT INTO DVD (Title, Mpaa_rating, Studio, Time, price) VALUES ('Ant-Man', 'PG-13', 'Walt Disney Video', '117', '19.98');
 INSERT INTO DVD (Title, Mpaa_rating, Studio, Time, price) VALUES ('Captain America', 'PG', 'Walt Disney Video', '123', '24.88');
+
+COMMIT;
