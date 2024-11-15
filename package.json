@@ -4,11 +4,15 @@
     "description": "Amazon Shop Competitor",
     "main": "application.js",
     "scripts": {
-        "start": "concurrently \"npm run start:books\" \"npm run start:dvds\" \"npm run start:laptop\"",
+        "start": "concurrently \"npm run start:books\" \"npm run start:dvds\" \"npm run start:laptop\" \"npm run start:toys\" \"npm run start:bike\" \"npm run start:food\"",
+        "start:bike": "cd A/src/service && node bike-controller.js",
+        "start:food": "cd A/src/service && node food-controller.js",
+        "start:toys": "cd A/src && node index.js",
         "start:books": "cd B/src/controllers && node bookController.js",
         "start:dvds": "cd B/src/controllers && node dvdController.js",
         "start:laptop": "cd B/src/service && node laptop-restcontroller.js",
-        "test": "cd B && jasmine"
+        "test:a": "cd A && jasmine",
+        "test:b": "cd B && jasmine"
     },
     "author": "Group 6",
     "license": "ISC",

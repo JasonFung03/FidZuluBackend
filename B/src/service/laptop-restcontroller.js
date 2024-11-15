@@ -50,6 +50,7 @@ class LaptopRestController{
             await this.transactionManager.rollbackTransaction();
         }
     }
+    
     async getTeam(req, res) {
         const team = {
             teamName: "MAXI V2",
