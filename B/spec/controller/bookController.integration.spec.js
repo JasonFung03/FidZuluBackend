@@ -23,7 +23,7 @@ describe("RESTful controller integration tests for Book CRUD operations:", () =>
     const baseUrl = 'http://localhost:3034/books/all';
 
     beforeEach(async () => {
-        await initDb();   // re-initialize the database before each spec
+        await initDb();
     });
 
     async function initDb() {
