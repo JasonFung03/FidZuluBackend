@@ -31,12 +31,8 @@ class DVDController {
             await this.transactionManager.startTransaction();
  
             const dvds = await this.dvdService.queryForDVDsByLocation(location.toUpperCase());
-            const response = {
-                location: location,
-                dvds: dvds
-            };
             
-            res.json(response);
+            res.json(dvds);
         } catch (err) {
             console.error(`Error on GET dvds for location ${location}: ${err}`);
             res.status(500).json({error: err.message});

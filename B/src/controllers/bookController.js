@@ -31,12 +31,8 @@ class BookController {
             await this.transactionManager.startTransaction();
  
             const books = await this.bookService.fetchAllBooksByLocation(location.toLocaleUpperCase());
-            const response = {
-                location: location,
-                books: books
-            };
-            
-            res.json(response);
+
+            res.json(books);
         } catch (err) {
             console.error(`error on GET books for location ${location}: ${err}`)
             res.status(500).json({error: err});

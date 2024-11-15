@@ -31,7 +31,7 @@ describe('DvdService integration tests for DVD operations:', () => {
     describe('retrieve all dvds', () => {
         it('succeeds', async () => {
             const allDVDs = await dvdService.queryForDVDsByLocation("IE");
-            const rowCount = await dbUtils.countRowsInTable('dvds');
+            const rowCount = await dbUtils.countRowsInTable('dvd');
             expect(allDVDs.length).toEqual(rowCount);
         });
     });
