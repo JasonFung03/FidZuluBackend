@@ -4,12 +4,13 @@
     "description": "Amazon Shop Competitor",
     "main": "application.js",
     "scripts": {
-        "start": "concurrently \"npm run start:books\" \"npm run start:dvds\"",
+        "start": "concurrently \"npm run start:books\" \"npm run start:dvds\" \"npm run start:laptop\"",
         "start:books": "cd B/src/controllers && node bookController.js",
-        "test": "cd B && jasmine",
-        "start:dvds": "cd B/src/controllers && node dvdController.js"
+        "start:dvds": "cd B/src/controllers && node dvdController.js",
+        "start:laptop": "cd B/src/service && node laptop-restcontroller.js",
+        "test": "cd B && jasmine"
     },
-    "author": "",
+    "author": "Group 6",
     "license": "ISC",
     "devDependencies": {
         "concurrently": "^8.2.2",
