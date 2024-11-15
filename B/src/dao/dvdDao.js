@@ -27,7 +27,7 @@ class DvdDao {
             } else if (location == "IN") {
                 newPrice = row.PRICE * 1.18;
             }
-            const dvd = new DVD(row.TITLE, row.MPAA_RATING, row.STUDIO, row.TIME, newPrice);
+            const dvd = new DVD(row.TITLE, row.MPAA_RATING, row.STUDIO, row.TIME, newPrice.toFixed(2));
             dvds.push(dvd);
         }
         await rs.close();
